@@ -33,6 +33,6 @@ A lightweight browser extension that allows users to click on a phone number ins
 
 ---
 
-### ⚒️ Working 
+### ⚒️ Working
 
-<video src="./assets/demo.mp4" controls width="100%"></video>
+![Demo](./assets/demo.gif)
