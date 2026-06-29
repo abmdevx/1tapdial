@@ -30,3 +30,9 @@ A lightweight browser extension that allows users to click on a phone number ins
 1. Download or clone this repository:
    ```bash
    git clone https://github.com/abdullahbutt09/sheets-to-voice.git
+
+---
+
+### ⚒️ Working 
+
+<video src="./assets/demo.mp4" controls width="100%"></video>
