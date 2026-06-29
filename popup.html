@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Autodialer</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="card">
+      <header class="header">
+        <div class="badge">Autodialer</div>
+        <h1>Sheets to Voice</h1>
+        <p>Single-click dialing from Google Sheets.</p>
+      </header>
+
+      <section class="meta">
+        <div class="row">
+          <span class="label">Created by</span>
+          <span class="value">Aaron Parker</span>
+        </div>
+        <div class="row">
+          <span class="label">Role</span>
+          <span class="value">Junior Sales Agent</span>
+        </div>
+      </section>
+
+      <section class="tips">
+        <div class="tip">Open Google Voice first</div>
+        <div class="tip">Click a phone cell in Sheets</div>
+        <div class="tip">Dialing starts automatically</div>
+      </section>
+
+      <section class="actions">
+        <button class="reconnect" id="reconnectBtn" type="button">Reconnect</button>
+        <span class="action-note" id="actionNote">Refresh not required</span>
+      </section>
+
+      <footer class="footer">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span class="status">Ready</span>
+      </footer>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>
