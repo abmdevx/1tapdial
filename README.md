@@ -1,8 +1,11 @@
 <div align="center">
 
-  <img src="./icons/phone-outgoing-svgrepo-com.svg" alt="Sheets to Voice icon" width="96" height="96">
+  <img src="./assets/1TapDial.png"
+     alt="Sheets to Voice icon"
+     width="256"
+     height="256">
 
-  # Sheets to Voice
+  # 1TapDial
 
   ### One-click calling from Google Sheets with Google Voice
 
@@ -69,14 +72,14 @@ The extension runs entirely in your browser. There is no server, account databas
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/abmdevx/sheets-to-voice.git
-   cd sheets-to-voice
+   git clone https://github.com/abmdevx/1tapdial.git
+   cd 1tapdial
    ```
 
 2. Open `chrome://extensions` in Chrome.
 3. Enable **Developer mode** in the top-right corner.
 4. Select **Load unpacked**.
-5. Choose the cloned `sheets-to-voice` directory.
+5. Choose the cloned `1tapdial` directory.
 6. Pin **Sheets to Voice** from the Extensions menu for quick access.
 
 ### Option 2: Download the source
@@ -146,7 +149,7 @@ Google Voice
 | `popup.html` | Extension popup markup and usage guidance |
 | `popup.css` | Popup layout and visual styling |
 | `popup.js` | Popup reconnect action |
-| `icons/` | Extension icons and the README’s phone-outgoing illustration |
+| `assets/` | Extension icons, product screenshots, and the README’s phone-outgoing illustration |
 | `assets/demo.gif` | Product demonstration |
 
 ## Permissions and privacy
@@ -179,8 +182,8 @@ The extension reads a selected value only to identify a phone number and pass it
 This project is intentionally dependency-free. No package installation or build command is required.
 
 ```bash
-git clone https://github.com/abmdevx/sheets-to-voice.git
-cd sheets-to-voice
+git clone https://github.com/abmdevx/1tapdial.git
+cd 1tapdial
 ```
 
 To test a change:
@@ -225,7 +228,7 @@ Please avoid committing credentials, real customer phone numbers, or private spr
 
 This project is available under the [MIT License](./LICENSE).
 
-The phone-outgoing illustration is provided as an SVG asset in [`icons/phone-outgoing-svgrepo-com.svg`](./icons/phone-outgoing-svgrepo-com.svg). See the asset’s upstream attribution and licensing details before redistributing modified artwork.
+The phone-outgoing illustration is provided as an SVG asset in [`assets/phone-outgoing-svgrepo-com.svg`](./assets/phone-outgoing-svgrepo-com.svg). See the asset’s upstream attribution and licensing details before redistributing modified artwork.
 
 ## Disclaimer
 
