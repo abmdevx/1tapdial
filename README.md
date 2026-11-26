@@ -1,113 +1,85 @@
-<div align="center">
+<p align="center">
+  <img src="assets/logo.svg" alt="1TapDial logo" width="96" height="96" />
+</p>
 
-  <img src="./assets/1TapDial.png"
-     alt="Sheets to Voice icon"
-     width="256"
-     height="256">
+<h1 align="center">1TapDial</h1>
 
-  # 1TapDial
+<p align="center">
+  One-click calling from Google Sheets with Google Voice. A lightweight Chrome extension, no backend.
+</p>
 
-  ### One-click calling from Google Sheets with Google Voice
+<p align="center">
+  <img alt="Manifest V3" src="https://img.shields.io/badge/Manifest-V3-4285F4?logo=googlechrome&logoColor=white" />
+  <img alt="Vanilla JS" src="https://img.shields.io/badge/JavaScript-Vanilla-f7df1e?logo=javascript&logoColor=black" />
+  <img alt="No backend" src="https://img.shields.io/badge/Backend-None-64748b" />
+  <img alt="License" src="https://img.shields.io/badge/License-MIT-22c55e" />
+</p>
 
-  <p>
-    A lightweight, open-source Chrome extension that detects phone numbers in Google Sheets,
-    sends them to Google Voice, and starts the call automatically.
-  </p>
+---
 
-  <p>
-    <img src="https://img.shields.io/badge/Manifest-V3-4285F4?style=flat&logo=googlechrome&logoColor=white" alt="Chrome Manifest V3">
-    <img src="https://img.shields.io/badge/License-MIT-22c55e?style=flat" alt="MIT License">
-    <img src="https://img.shields.io/badge/Backend-None-64748b?style=flat" alt="No backend">
-  </p>
+1TapDial turns a phone number in a spreadsheet into a live call. Click a cell in Google Sheets and the number is sent to
+Google Voice, which fills the dialer and starts calling.
 
-  <p>
-    <a href="#features">Features</a> ·
-    <a href="#installation">Installation</a> ·
-    <a href="#usage">Usage</a> ·
-    <a href="#development">Development</a> ·
-    <a href="#contributing">Contributing</a>
-  </p>
+Everything runs inside your browser. There is no server, no account and no API key.
 
-</div>
+<p align="center">
+  <img src="assets/demo.gif" alt="1TapDial demo" width="720" />
+</p>
 
-<br>
+## What you can do
 
-![Sheets to Voice demo](./assets/demo.gif)
+- Dial a number by clicking its cell in Google Sheets
+- Use formatted numbers such as `+1 (555) 123-4567` without cleaning them first
+- See at a glance whether Google Voice and Google Sheets are connected
+- Recover a lost connection with one click, without refreshing any tab
+- Keep your data private, since nothing leaves the browser
 
-## Overview
+## Tech stack
 
-Sheets to Voice streamlines calling workflows for teams that keep contact lists in Google Sheets. Select a cell containing a phone number and the extension will:
-
-1. Detect and normalize the number.
-2. Find an open Google Voice tab.
-3. Place the number in the Google Voice dialer.
-4. Click the available **Call** button.
-
-The extension runs entirely in your browser. There is no server, account database, analytics service, or external API key.
-
-> **Important:** Google Voice must be open and signed in before dialing. The extension automates the Google Voice web interface; it does not provide phone service or bypass Google Voice requirements.
-
-## Features
-
-- **Single-click dialing** — select a phone-number cell in Google Sheets to begin.
-- **Flexible number detection** — supports plain and commonly formatted numbers, including `+1 (555) 123-4567`.
-- **Google Voice handoff** — sends the detected number to an existing Google Voice tab.
-- **Automatic call action** — clicks the Google Voice call control after the number is inserted.
-- **Connection recovery** — reconnect content scripts from the popup when a tab needs to be refreshed.
-- **Resilient page handling** — retries while Sheets or Voice finishes rendering dynamic UI elements.
-- **Lightweight and local** — vanilla JavaScript, no build step, no backend, and no runtime dependencies.
+| Part        | Technology                                              |
+| ----------- | ------------------------------------------------------- |
+| Extension   | Chrome Manifest V3, service worker, content scripts     |
+| Language    | Vanilla JavaScript, HTML and CSS                        |
+| Integration | Google Sheets and Google Voice web interfaces           |
+| Build       | None. No dependencies, no bundler                       |
 
 ## Requirements
 
-- Google Chrome or another Chromium-based browser with Manifest V3 support.
-- An active Google account with access to:
-  - [Google Sheets](https://docs.google.com/spreadsheets/)
-  - [Google Voice](https://voice.google.com/)
-- A Google Sheet containing phone numbers with 10–15 digits, optionally prefixed with `+`.
+- Google Chrome or another Chromium browser with Manifest V3 support
+- A Google account with access to [Google Sheets](https://docs.google.com/spreadsheets/) and [Google Voice](https://voice.google.com/)
+- A sheet containing phone numbers of 10 to 15 digits, with an optional leading `+`
 
-## Installation
+## Getting started
 
-### Option 1: Load the extension locally
+```bash
+git clone https://github.com/abmdevx/1tapdial.git
+cd 1tapdial
+```
 
-1. Clone the repository:
+Then load it into Chrome:
 
-   ```bash
-   git clone https://github.com/abmdevx/1tapdial.git
-   cd 1tapdial
-   ```
+1. Open `chrome://extensions`
+2. Turn on **Developer mode** (top right)
+3. Click **Load unpacked** and select the `1tapdial` folder
+4. Pin **1TapDial** from the extensions menu for quick access
 
-2. Open `chrome://extensions` in Chrome.
-3. Enable **Developer mode** in the top-right corner.
-4. Select **Load unpacked**.
-5. Choose the cloned `1tapdial` directory.
-6. Pin **Sheets to Voice** from the Extensions menu for quick access.
+After changing the source, press **Reload** on the extension card in `chrome://extensions`.
 
-### Option 2: Download the source
+## Using it
 
-1. Open the repository on GitHub.
-2. Select **Code → Download ZIP**.
-3. Extract the archive.
-4. Follow steps 2–5 above and select the extracted directory.
+1. Open [Google Voice](https://voice.google.com/) and sign in
+2. Open a Google Sheet that contains phone numbers
+3. Click a cell with a number
+4. Google Voice fills the dialer and starts the call
 
-> When the source changes, return to `chrome://extensions` and click the extension’s **Reload** button.
+<p align="center">
+  <img src="assets/popup.png" alt="1TapDial popup" width="320" />
+</p>
 
-## Usage
+The popup shows whether both tabs are connected. If it stops responding after a navigation or browser update, open it and
+press **Reconnect**.
 
-1. Open [Google Voice](https://voice.google.com/) in a browser tab and sign in.
-2. Open a Google Sheet containing phone numbers.
-3. Click a cell containing a phone number.
-4. The extension detects the number and sends it to Google Voice.
-5. Google Voice fills the dialer and starts the call.
-
-If the extension stops responding after a navigation or browser update:
-
-1. Open the extension popup.
-2. Click **Reconnect**.
-3. Confirm that the Google Voice tab and the Google Sheets tab are still open.
-
-### Supported examples
-
-The extension can recognize values such as:
+Numbers that are recognised:
 
 ```text
 5551234567
@@ -117,125 +89,84 @@ The extension can recognize values such as:
 555-123-4567
 ```
 
-Only values that resolve to 10–15 digits are sent to Google Voice.
+Only values that resolve to 10 to 15 digits are sent to Google Voice.
 
-## How it works
+## How it fits together
+
+Selecting a cell in Sheets triggers a message to the background service worker, which finds your Google Voice tab and
+hands the number to the script running there.
 
 ```text
 Google Sheets
+     │  cell selected / formula bar changes
+     ▼
+content-sheets.js     extract, normalise, de-duplicate
      │
-     │  Select a cell / update formula bar
      ▼
-content-sheets.js
-     │  Extract, normalize, and de-duplicate number
+background.js         find the Voice tab, inject if needed
+     │
      ▼
-background.js
-     │  Find Google Voice tab and inject content script
-     ▼
-content-voice.js
-     │  Fill dialer and click Call
+content-voice.js      fill the dialer, press Call
+     │
      ▼
 Google Voice
 ```
 
 ### Project structure
 
-| File | Purpose |
-| --- | --- |
-| `manifest.json` | Chrome Manifest V3 configuration, permissions, matches, and entry points |
-| `background.js` | Service worker for tab discovery, script injection, messaging, and reconnects |
-| `content-sheets.js` | Reads selected Sheets cells/formula bar values and extracts phone numbers |
-| `content-voice.js` | Finds the Google Voice dialer and triggers the call action |
-| `popup.html` | Extension popup markup and usage guidance |
-| `popup.css` | Popup layout and visual styling |
-| `popup.js` | Popup reconnect action |
-| `assets/` | Extension icons, product screenshots, and the README’s phone-outgoing illustration |
-| `assets/demo.gif` | Product demonstration |
+```text
+1tapdial/
+├── manifest.json        # MV3 config, permissions, entry points
+├── background.js        # tab discovery, injection, reconnects
+├── content-sheets.js    # reads the selected cell, finds the number
+├── content-voice.js     # drives the Google Voice dialer
+├── popup.html           # popup markup
+├── popup.css            # popup design
+├── popup.js             # connection status and Reconnect
+└── assets/              # logo, icons, popup preview, demo
+```
 
 ## Permissions and privacy
 
-The extension requests only the permissions needed for its workflow:
+| Permission  | Why it is needed                                      |
+| ----------- | ----------------------------------------------------- |
+| `activeTab` | Work with the tab you are on                          |
+| `tabs`      | Find open Sheets and Voice tabs, show connection status |
+| `scripting` | Reconnect content scripts after navigation            |
+| `alarms`    | Periodically keep supported tabs connected            |
 
-| Permission | Why it is used |
-| --- | --- |
-| `activeTab` | Work with the currently active browser tab |
-| `tabs` | Find open Google Sheets and Google Voice tabs |
-| `scripting` | Reconnect or inject the extension’s content scripts |
-| `alarms` | Periodically keep supported tabs connected |
+Host access is limited to `https://docs.google.com/*` and `https://voice.google.com/*`.
 
-Host access is limited to:
+1TapDial does not upload sheet contents or numbers, store contacts or call history, or use analytics or advertising.
+Review the source before loading any unpacked extension, and only use it with data you are allowed to access.
 
-- `https://docs.google.com/*`
-- `https://voice.google.com/*`
+## Troubleshooting
 
-Sheets to Voice does **not**:
-
-- Upload sheet contents or phone numbers to a server.
-- Store contacts, call history, or personal data.
-- Use advertising, tracking, or analytics services.
-- Require an API key or a separate account.
-
-The extension reads a selected value only to identify a phone number and pass it to the open Google Voice page. Review the source before installing any unpacked extension, and use it only with data you are authorized to access.
-
-## Development
-
-This project is intentionally dependency-free. No package installation or build command is required.
-
-```bash
-git clone https://github.com/abmdevx/1tapdial.git
-cd 1tapdial
-```
-
-To test a change:
-
-1. Load the repository as an unpacked extension.
-2. Open `chrome://extensions`.
-3. Click **Reload** after each source change.
-4. Test with both an open Google Sheets tab and an open Google Voice tab.
-5. Use the extension service worker’s **Inspect views** link and the browser DevTools console for debug messages.
-
-The source currently logs diagnostic messages to the console while the extension is running. This is useful during development and can be reduced before a production release.
+| Problem                    | Fix                                                                 |
+| -------------------------- | ------------------------------------------------------------------- |
+| Nothing happens on click   | Make sure Google Voice is open and signed in, then press Reconnect |
+| Popup says "Not open"      | Open the missing tab, the status updates on its own                 |
+| Stopped after a Chrome update | Press Reconnect, or reload the extension                         |
+| Number is ignored          | It must contain 10 to 15 digits                                     |
 
 ## Known limitations
 
-- Google Voice must be open, signed in, and available in a browser tab.
-- Google Sheets and Google Voice can change their internal DOM and accessibility labels, which may require selector updates.
-- Calls are subject to Google Voice availability, account permissions, browser permissions, and regional restrictions.
-- The extension is designed for phone numbers containing 10–15 digits; short extensions and arbitrary identifiers are ignored.
-- This repository does not currently include an automated test suite.
+- Google Voice must be open and signed in in a browser tab
+- Google can change the Sheets or Voice interface, which may require selector updates
+- Calls depend on your Google Voice account, permissions and region
+- There is no automated test suite yet
 
 ## Contributing
 
-Contributions are welcome.
+1. Fork the repo and create a focused branch
+2. Load it unpacked and test with both a Sheets tab and a Voice tab open
+3. Keep permissions narrow and keep user data inside the browser
+4. Open a pull request describing the change, how you tested it and a screenshot for UI changes
 
-1. Fork the repository.
-2. Create a focused branch:
-
-   ```bash
-   git checkout -b improve-number-detection
-   ```
-
-3. Make and manually test your change in Chrome.
-4. Keep permissions narrow and avoid sending user data outside the browser.
-5. Open a pull request with:
-   - What changed and why.
-   - How the change was tested.
-   - Screenshots or a short recording for UI changes.
-
-Please avoid committing credentials, real customer phone numbers, or private spreadsheet data.
+Please do not commit real phone numbers or private spreadsheet data.
 
 ## License
 
-This project is available under the [MIT License](./LICENSE).
+Released under the [MIT License](./LICENSE).
 
-The phone-outgoing illustration is provided as an SVG asset in [`assets/phone-outgoing-svgrepo-com.svg`](./assets/phone-outgoing-svgrepo-com.svg). See the asset’s upstream attribution and licensing details before redistributing modified artwork.
-
-## Disclaimer
-
-Sheets to Voice is an independent open-source project and is not affiliated with, sponsored by, or endorsed by Google, Google Sheets, or Google Voice. Use it responsibly and in accordance with the terms and policies that apply to your Google account and calling activity.
-
----
-
-<div align="center">
-  Built for faster, simpler calling workflows.
-</div>
+1TapDial is an independent project and is not affiliated with or endorsed by Google, Google Sheets or Google Voice.

@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Sheets to Voice Autodialer",
+  "name": "1TapDial",
   "version": "1.0.0",
   "description": "Send phone numbers from Google Sheets to Google Voice dial pad.",
   "icons": {
@@ -36,7 +36,7 @@
     }
   ],
   "action": {
-    "default_title": "Sheets to Voice Autodialer",
+    "default_title": "1TapDial",
     "default_popup": "popup.html",
     "default_icon": {
       "16": "assets/icon16.png",
